@@ -1,8 +1,8 @@
 import torch
 import torch.nn as nn
 import torch.optim as optim
-from models.resnet import ResIRSE
-from models.resnet18 import ResNet18
+from resnet import ResIRSE
+from resnet18 import ResNet18
 from torchvision import transforms as T
 from PIL import Image
 import numpy as np
@@ -25,13 +25,14 @@ class Test():
         self.predict()
 
     def load_model(self):
+        print(f"{self.model_name} model loading on device {self.device}")
         if self.model_name == "teacher_resnet50":
-            self.model = ResIRSE()
+            self.model = ResIRSE(embedding_size=512,drop_ratio=0.5).to(self.device)
             self.treshold = 0.278049
-            self.model.load_state_dict(torch.load("models/teacher.pth"))
+            self.model.load_state_dict(torch.load("models/teacher.pth"), map_location=self.device)
         elif self.model_name == "student_resnet18":
-            self.model = ResNet18()
-            self.model.load_state_dict(torch.load("models/student.pth"))
+            self.model = ResNet18().to(self.device)
+            self.model.load_state_dict(torch.load("models/student.pth"), map_location=self.device)
             self.treshold = 0.3187718987464905
         else:
             print("model not found")
@@ -55,7 +56,7 @@ class Test():
         with torch.no_grad():
             self.img1 = self.img1.to(self.device)
             self.img2 = self.img2.to(self.device)
-            self.model.to(self.device)
+            self.model
             self.model.eval()
 
             # 记录推理时间
@@ -76,3 +77,8 @@ class Test():
 
     def get_result(self):
         return self.result, self.confidence_precent, self.inference_time
+    
+if __name__ == "__main__":
+    # Test test
+    test = Test("teacher_resnet50", "/Users/zip95297/Downloads/001.jpg", "/Users/zip95297/Downloads/AbeVigoda_0001.jpg")
+    print(test.get_result())
