@@ -33,10 +33,10 @@ class Test():
         if self.model_name == "teacher_resnet50":
             self.model = ResIRSE(embedding_size=512,drop_ratio=0.5).to(self.device)
             self.treshold = 0.278049
-            self.model.load_state_dict(torch.load("models/teacher.pth"), map_location=self.device)
+            self.model.load_state_dict(torch.load("models/TeacherWithoutDataParalle.pth"))
         elif self.model_name == "student_resnet18":
             self.model = ResNet18().to(self.device)
-            self.model.load_state_dict(torch.load("models/student.pth"), map_location=self.device)
+            self.model.load_state_dict(torch.load("models/StudentWithoutDataParalle.pth"), map_location=self.device)
             self.treshold = 0.3187718987464905
         else:
             print("model not found")
