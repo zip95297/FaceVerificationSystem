@@ -82,6 +82,18 @@ class MainWindow(QMainWindow):
         self.button1.clicked.connect(self.test_model)
         layout.addWidget(self.button1)
 
+        self.result_label = QLabel(f"Result")
+        self.result_label.setAlignment(Qt.AlignCenter)
+        layout.addWidget(self.result_label)
+
+        self.confidence_label = QLabel(f"Confidence")
+        self.confidence_label.setAlignment(Qt.AlignCenter)
+        layout.addWidget(self.confidence_label)
+
+        self.inferrence_time_label = QLabel(f"Inferrence Time")
+        self.inferrence_time_label.setAlignment(Qt.AlignCenter)
+        layout.addWidget(self.inferrence_time_label)
+
         central_widget = QWidget()
         central_widget.setLayout(layout)
         self.setCentralWidget(central_widget)
@@ -128,6 +140,10 @@ class MainWindow(QMainWindow):
         self.result = result
         self.confidence_percent = confidence_percent
         self.inferrence_time = inferrence_time
+        
+        self.result_label.setText(f"Result: {self.result}")
+        self.confidence_label.setText(f"Confidence: {self.confidence_percent}")
+        self.inferrence_time_label.setText(f"Inferrence Time: {self.inferrence_time}")
         # return result, confidence_percent, inferrence_time
     
     def load_image(self,img_label):

@@ -36,7 +36,7 @@ class Test():
             self.model.load_state_dict(torch.load("models/TeacherWithoutDataParalle.pth"))
         elif self.model_name == "student_resnet18":
             self.model = ResNet18().to(self.device)
-            self.model.load_state_dict(torch.load("models/StudentWithoutDataParalle.pth"), map_location=self.device)
+            self.model.load_state_dict(torch.load("models/StudentWithoutDataParalle.pth"))
             self.treshold = 0.3187718987464905
         else:
             print("model not found")
@@ -70,13 +70,17 @@ class Test():
             self.result = "same person" if self.cosin_simularity > self.treshold else "not same person"
             end = time.time()
             inference_time = end - start
-
-            self.confidence =math.abs(1/(1+math.e**(-(self.cosin_simularity - self.treshold)))-0.5)*2
+            
+            self.confidence =abs(1/(1+math.e**(-(self.cosin_simularity - self.treshold)))-0.5)*2
             self.confidence_precent= self.confidence*100
             return self.result, self.confidence_precent, self.inference_time
         
-    def cosin_metric(x1, x2):
-        return np.dot(x1, x2) / (np.linalg.norm(x1) * np.linalg.norm(x2))
+    def cosin_metric(self,x1, x2):
+        # 直接使用tensor计算
+        x1=x1.squeeze()
+        x2=x2.view(-1)
+        return torch.dot(x1, x2) / (torch.norm(x1) * torch.norm(x2))
+        # return np.dot(x1, x2) / (np.linalg.norm(x1) * np.linalg.norm(x2))
 
     def get_result(self):
         return self.result, self.confidence_precent, self.inference_time
