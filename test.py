@@ -7,7 +7,7 @@ from torchvision import transforms as T
 from PIL import Image
 import numpy as np
 import math
-import os
+import time
 
 class Test():
     def __init__(self,model_name, img_path1, img_path2):
@@ -56,13 +56,19 @@ class Test():
             self.img2 = self.img2.to(self.device)
             self.model.to(self.device)
             self.model.eval()
+
+            # 记录推理时间
+            start = time.time()
             output1 = self.model(self.img1)
             output2 = self.model(self.img2)
             self.cosin_simularity = self.cosin_metric(output1, output2)
-            self.confidence =math.abs(1/(1+math.e**(-(self.cosin_simularity - self.treshold)))-0.5)*2
             self.result = "same person" if self.cosin_simularity > self.treshold else "not same person"
+            end = time.time()
+            inference_time = end - start
+
+            self.confidence =math.abs(1/(1+math.e**(-(self.cosin_simularity - self.treshold)))-0.5)*2
             self.confidence_precent= self.confidence*100
-            return self.result, self.confidence_precent
+            return self.result, self.confidence_precent, inference_time
         
     def cosin_metric(x1, x2):
         return np.dot(x1, x2) / (np.linalg.norm(x1) * np.linalg.norm(x2))

@@ -77,7 +77,7 @@ class MainWindow(QMainWindow):
 
 
 
-        self.button1 = QPushButton("点击输出")
+        self.button1 = QPushButton("TEST")
         self.button1.clicked.connect(self.show_output)
         layout.addWidget(self.button1)
 
