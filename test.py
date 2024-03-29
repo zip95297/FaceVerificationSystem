@@ -19,6 +19,7 @@ class Test():
         self.treshold = None
         self.confidence = None
         self.result = None
+        self.inference_time = None
         self.load_model()
         self.load_image()
         self.predict()
@@ -68,7 +69,10 @@ class Test():
 
             self.confidence =math.abs(1/(1+math.e**(-(self.cosin_simularity - self.treshold)))-0.5)*2
             self.confidence_precent= self.confidence*100
-            return self.result, self.confidence_precent, inference_time
+            return self.result, self.confidence_precent, self.inference_time
         
     def cosin_metric(x1, x2):
         return np.dot(x1, x2) / (np.linalg.norm(x1) * np.linalg.norm(x2))
+
+    def get_result(self):
+        return self.result, self.confidence_precent, self.inference_time

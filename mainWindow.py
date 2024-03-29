@@ -3,6 +3,7 @@ from PyQt5.QtWidgets import  QComboBox, QSlider,QHBoxLayout, QApplication, QMain
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtCore import Qt
 from functools import partial
+from .test import Test
 # import test
 
 class MainWindow(QMainWindow):
@@ -16,6 +17,10 @@ class MainWindow(QMainWindow):
         self.img_path2 = None
 
         self.model = None
+
+        self.result = None
+        self.confidence_percent = None
+        self.inferrence_time = None
 
         layout = QVBoxLayout()
 
@@ -73,12 +78,8 @@ class MainWindow(QMainWindow):
         layout.addLayout(layout_model_choose)
 
 
-
-
-
-
         self.button1 = QPushButton("TEST")
-        self.button1.clicked.connect(self.show_output)
+        self.button1.clicked.connect(self.test_model)
         layout.addWidget(self.button1)
 
         central_widget = QWidget()
@@ -120,11 +121,15 @@ class MainWindow(QMainWindow):
 
         if self.img_path1 and self.img_path2:
             self.show_img_path.setText(f"both img uploaded successfully!")
-        
 
-    def show_output(self):
-        self.show_img_path.setText(f"{self.model}")
-
+    def test_model(self):
+        test=Test(model_name=self.model, img_path1=self.img_path1, img_path2=self.img_path2)
+        result, confidence_percent, inferrence_time=test.get_result()
+        self.result = result
+        self.confidence_percent = confidence_percent
+        self.inferrence_time = inferrence_time
+        # return result, confidence_percent, inferrence_time
+    
     def load_image(self,img_label):
         # 弹出文件对话框选择图像文件
         file_name, _ = QFileDialog.getOpenFileName(self, "选择图像文件", "", "图像文件 (*.png *.jpg *.bmp)")
