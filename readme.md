@@ -17,3 +17,11 @@
 2. 将输入图像进行预处理
 3. 加载入网络得到embeddings，并记录时间
 4. 比对，通过比较模型的treshhold判断是否为同一个人，并得到置信度
+
+# TODO
+
+1. 修改置信度公式
+
+# TIPS
+
+1. 教室模型是在使用了`model = nn.DataParalle()`情况下训练的,加载到CUDA应包含上面的代码。若加载到非CUDA设备，应使用[这个](./models/util_pth.py)进行处理。
