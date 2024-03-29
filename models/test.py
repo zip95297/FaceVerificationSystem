@@ -71,7 +71,7 @@ class Test():
             end = time.time()
             self.inference_time = end - start
             
-            self.confidence =abs(1/(1+math.e**(-(self.cosin_simularity - self.treshold)))-0.5)*2
+            self.confidence =abs(1/(1+math.e**(-(self.cosin_simularity - self.treshold)*8))-0.5)*2
             self.confidence_precent= self.confidence*100
             return self.result, self.confidence_precent, self.inference_time
         
