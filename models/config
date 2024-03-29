@@ -1,0 +1,7 @@
+teacher_resnet50:
+    acc : 97.6%
+    treshold : 0.278049
+
+student_resnet18:
+    acc : 94.7%
+    treshold : 0.3187718987464905
