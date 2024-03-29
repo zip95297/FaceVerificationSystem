@@ -3,6 +3,7 @@ from PyQt5.QtWidgets import  QComboBox, QSlider,QHBoxLayout, QApplication, QMain
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtCore import Qt
 from functools import partial
+# import test
 
 class MainWindow(QMainWindow):
     def __init__(self):
