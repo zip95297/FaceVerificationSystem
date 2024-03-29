@@ -8,6 +8,9 @@ from PIL import Image
 import numpy as np
 import math
 import time
+# cuda训练的模型不能直接在apple silicon上推理，需要通过coremltools转换
+# pip install -U coremltools
+import cachetools as ct
 
 class Test():
     def __init__(self,model_name, img_path1, img_path2):
