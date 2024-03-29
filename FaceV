@@ -1,0 +1,6 @@
+# echo ${BASH_SOURCE[0]}
+# echo $0
+
+conda activate torch_mps
+python ${BASH_SOURCE[0]}/mainWindow
+conda deactivate
