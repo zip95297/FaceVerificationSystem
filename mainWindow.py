@@ -16,7 +16,7 @@ class MainWindow(QMainWindow):
         self.img_path1 = None
         self.img_path2 = None
 
-        self.model = None
+        self.model = "teacher_resnet50"
 
         self.result = None
         self.confidence_percent = None

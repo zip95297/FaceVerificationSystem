@@ -1,8 +1,8 @@
 import torch
 import torch.nn as nn
 import torch.optim as optim
-from resnet import ResIRSE
-from resnet18 import ResNet18
+from .resnet import ResIRSE
+from .resnet18 import ResNet18
 from torchvision import transforms as T
 from PIL import Image
 import numpy as np
@@ -10,7 +10,7 @@ import math
 import time
 # cuda训练的模型不能直接在apple silicon上推理，需要通过coremltools转换
 # pip install -U coremltools
-import cachetools as ct
+import coremltools as ct
 
 class Test():
     def __init__(self,model_name, img_path1, img_path2):
@@ -60,7 +60,6 @@ class Test():
         with torch.no_grad():
             self.img1 = self.img1.to(self.device)
             self.img2 = self.img2.to(self.device)
-            self.model
             self.model.eval()
 
             # 记录推理时间
