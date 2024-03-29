@@ -67,9 +67,9 @@ class Test():
             output1 = self.model(self.img1)
             output2 = self.model(self.img2)
             self.cosin_simularity = self.cosin_metric(output1, output2)
-            self.result = "same person" if self.cosin_simularity > self.treshold else "not same person"
+            self.result = "SAME person" if self.cosin_simularity > self.treshold else "NOT SAME person"
             end = time.time()
-            inference_time = end - start
+            self.inference_time = end - start
             
             self.confidence =abs(1/(1+math.e**(-(self.cosin_simularity - self.treshold)))-0.5)*2
             self.confidence_precent= self.confidence*100

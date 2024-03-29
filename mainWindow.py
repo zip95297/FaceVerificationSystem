@@ -143,7 +143,7 @@ class MainWindow(QMainWindow):
         
         self.result_label.setText(f"Result: {self.result}")
         self.confidence_label.setText(f"Confidence: {self.confidence_percent}")
-        self.inferrence_time_label.setText(f"Inferrence Time: {self.inferrence_time}")
+        self.inferrence_time_label.setText(f"Inferrence Time: {self.inferrence_time*1000:.2f}ms")
         # return result, confidence_percent, inferrence_time
     
     def load_image(self,img_label):
