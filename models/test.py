@@ -15,6 +15,7 @@ class Test():
         self.img_path1 = img_path1
         self.img_path2 = img_path2
         self.device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
+
         self.model = None
         self.treshold = None
         self.confidence = None
