@@ -9,7 +9,7 @@ from models.test import Test
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("My App")
+        self.setWindowTitle("Face Verification System")
         self.resize(480, 270)
         self.show()
         
