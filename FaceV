@@ -1,6 +1,1 @@
-# echo ${BASH_SOURCE[0]}
-# echo $0
-
-conda activate torch_mps
-python ./mainWindow.py
-conda deactivate
+/opt/anaconda3/envs/torch_mps/bin/python /Users/zip95297/Repository/CodeLibrary/FaceVerificationSystem/mainWindow.py
