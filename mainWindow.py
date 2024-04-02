@@ -135,6 +135,9 @@ class MainWindow(QMainWindow):
             self.show_img_path.setText(f"both img uploaded successfully!")
 
     def test_model(self):
+        if not self.img_path1 or not self.img_path2:
+            self.show_img_path.setText(f"please upload both img!")
+            return
         test=Test(model_name=self.model, img_path1=self.img_path1, img_path2=self.img_path2)
         result, confidence_percent, inferrence_time=test.get_result()
         self.result = result
