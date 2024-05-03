@@ -17,6 +17,7 @@ class MainWindow(QMainWindow):
         self.img_path2 = None
 
         self.model = "teacher_resnet50"
+        self.device = "mps"
 
         self.result = None
         self.confidence_percent = None
@@ -77,6 +78,18 @@ class MainWindow(QMainWindow):
 
         layout.addLayout(layout_model_choose)
 
+         # 选择计算设备
+        layout_device_choose = QHBoxLayout()
+        layout_device_choose.addWidget(QLabel("Please choose a device:"))
+        
+        self.combo_box2 = QComboBox()
+        self.combo_box2.setFixedWidth(280)
+        self.combo_box2.addItems(["mps", "cpu"])
+        self.combo_box2.currentIndexChanged.connect(self.device_change)
+        layout_device_choose.addWidget(self.combo_box2)
+
+        layout.addLayout(layout_device_choose)
+
 
         self.button1 = QPushButton("TEST")
         self.button1.clicked.connect(self.test_model)
@@ -100,6 +113,9 @@ class MainWindow(QMainWindow):
 
     def combo_change(self, index):
         self.model = self.combo_box.currentText()
+
+    def device_change(self, index):
+        self.device = self.combo_box2.currentText()
 
     def dragEnterEvent(self, event):
         if event.mimeData().hasUrls():
@@ -138,7 +154,7 @@ class MainWindow(QMainWindow):
         if not self.img_path1 or not self.img_path2:
             self.show_img_path.setText(f"please upload both img!")
             return
-        test=Test(model_name=self.model, img_path1=self.img_path1, img_path2=self.img_path2)
+        test=Test(model_name=self.model, img_path1=self.img_path1, img_path2=self.img_path2,device=self.device)
         result, confidence_percent, inferrence_time=test.get_result()
         self.result = result
         self.confidence_percent = confidence_percent

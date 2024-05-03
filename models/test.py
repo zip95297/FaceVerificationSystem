@@ -14,11 +14,13 @@ import time
 import coremltools as ct
 
 class Test():
-    def __init__(self,model_name, img_path1, img_path2):
+    def __init__(self,model_name, img_path1, img_path2, device="cpu"):
         self.model_name = model_name
         self.img_path1 = img_path1
         self.img_path2 = img_path2
         self.device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
+        self.device = torch.device("cpu")
+        self.device = torch.device(device)
 
         self.model = None
         self.treshold = None
@@ -72,8 +74,8 @@ class Test():
             output1 = self.model(self.img1)
             output2 = self.model(self.img2)
             self.cosin_simularity = self.cosin_metric(output1, output2)
-            self.result = "SAME person" if self.cosin_simularity > self.treshold else "NOT SAME person"
             end = time.time()
+            self.result = "SAME person" if self.cosin_simularity > self.treshold else "NOT SAME person"
             self.inference_time = end - start
             
             self.confidence =abs(1/(1+math.e**(-(self.cosin_simularity - self.treshold)*8))-0.5)*2
