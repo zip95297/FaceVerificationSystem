@@ -3,6 +3,7 @@ import torch.nn as nn
 import torch.optim as optim
 from .resnet import ResIRSE
 from .resnet18 import ResNet18
+from .resnet18_with_cfg import ResNet18_with_config
 from torchvision import transforms as T
 from PIL import Image
 import numpy as np
@@ -38,6 +39,10 @@ class Test():
             self.model = ResNet18().to(self.device)
             self.model.load_state_dict(torch.load("models/StudentWithoutDataParalle.pth"))
             self.treshold = 0.3187718987464905
+        elif self.model_name == "pruned_resnet18":
+            self.model= ResNet18_with_config(config=[512, 60, 'M', 64, 64, 64, 63, 128, 128, 53, 128, 128, 256, 256, 8, 247, 222, 497, 377, 5, 420, 510]).to(self.device)
+            self.model.load_state_dict(torch.load("models/pruned_model.pth",map_location=self.device))
+            self.treshold = 0.2431570739
         else:
             print("model not found")
             return
@@ -87,5 +92,9 @@ class Test():
     
 if __name__ == "__main__":
     # Test test
-    test = Test("teacher_resnet50", "/Users/zip95297/Downloads/001.jpg", "/Users/zip95297/Downloads/AbeVigoda_0001.jpg")
+    img1_pth="/Users/zip95297/Downloads/人脸测试/001.jpg"
+    img2_pth="/Users/zip95297/Downloads/人脸测试/AbeVigoda_0001.jpg"
+
+    test = Test("teacher_resnet50", img1_pth, img2_pth)
+    test = Test("pruned_resnet18", img1_pth, img2_pth)
     print(test.get_result())

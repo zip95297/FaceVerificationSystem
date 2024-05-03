@@ -71,7 +71,7 @@ class MainWindow(QMainWindow):
         
         self.combo_box = QComboBox()
         self.combo_box.setFixedWidth(280)
-        self.combo_box.addItems(["teacher_resnet50", "student_resnet18"])
+        self.combo_box.addItems(["teacher_resnet50", "student_resnet18", "pruned_resnet18"])
         self.combo_box.currentIndexChanged.connect(self.combo_change)
         layout_model_choose.addWidget(self.combo_box)
 
