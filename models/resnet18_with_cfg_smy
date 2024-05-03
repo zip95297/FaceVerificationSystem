@@ -13,7 +13,7 @@
            Conv2d-10           [64, 64, 32, 32]           3,840
       BatchNorm2d-11           [64, 64, 32, 32]             128
              ReLU-12           [64, 64, 32, 32]               0
-BasicBlock_with_config-13           [64, 64, 32, 32]               0
+BasicBlock_with_config-13      [64, 64, 32, 32]               0
            Conv2d-14           [64, 64, 32, 32]          36,864
       BatchNorm2d-15           [64, 64, 32, 32]             128
              ReLU-16           [64, 64, 32, 32]               0
@@ -22,7 +22,7 @@ BasicBlock_with_config-13           [64, 64, 32, 32]               0
            Conv2d-19           [64, 63, 32, 32]           4,032
       BatchNorm2d-20           [64, 63, 32, 32]             126
              ReLU-21           [64, 63, 32, 32]               0
-BasicBlock_with_config-22           [64, 63, 32, 32]               0
+BasicBlock_with_config-22      [64, 63, 32, 32]               0
            Conv2d-23          [64, 128, 16, 16]          72,576
       BatchNorm2d-24          [64, 128, 16, 16]             256
              ReLU-25          [64, 128, 16, 16]               0
@@ -31,14 +31,14 @@ BasicBlock_with_config-22           [64, 63, 32, 32]               0
            Conv2d-28          [64, 128, 16, 16]           8,064
       BatchNorm2d-29          [64, 128, 16, 16]             256
              ReLU-30          [64, 128, 16, 16]               0
-BasicBlock_with_config-31          [64, 128, 16, 16]               0
+BasicBlock_with_config-31     [64, 128, 16, 16]               0
            Conv2d-32           [64, 53, 16, 16]          61,056
       BatchNorm2d-33           [64, 53, 16, 16]             106
              ReLU-34           [64, 53, 16, 16]               0
            Conv2d-35          [64, 128, 16, 16]          61,056
       BatchNorm2d-36          [64, 128, 16, 16]             256
              ReLU-37          [64, 128, 16, 16]               0
-BasicBlock_with_config-38          [64, 128, 16, 16]               0
+BasicBlock_with_config-38     [64, 128, 16, 16]               0
            Conv2d-39            [64, 256, 8, 8]         294,912
       BatchNorm2d-40            [64, 256, 8, 8]             512
              ReLU-41            [64, 256, 8, 8]               0
@@ -47,7 +47,7 @@ BasicBlock_with_config-38          [64, 128, 16, 16]               0
            Conv2d-44            [64, 256, 8, 8]          32,768
       BatchNorm2d-45            [64, 256, 8, 8]             512
              ReLU-46            [64, 256, 8, 8]               0
-BasicBlock_with_config-47            [64, 256, 8, 8]               0
+BasicBlock_with_config-47       [64, 256, 8, 8]               0
            Conv2d-48              [64, 8, 8, 8]          18,432
       BatchNorm2d-49              [64, 8, 8, 8]              16
              ReLU-50              [64, 8, 8, 8]               0
@@ -56,7 +56,7 @@ BasicBlock_with_config-47            [64, 256, 8, 8]               0
            Conv2d-53            [64, 247, 8, 8]          63,232
       BatchNorm2d-54            [64, 247, 8, 8]             494
              ReLU-55            [64, 247, 8, 8]               0
-BasicBlock_with_config-56            [64, 247, 8, 8]               0
+BasicBlock_with_config-56       [64, 247, 8, 8]               0
            Conv2d-57            [64, 497, 4, 4]       1,104,831
       BatchNorm2d-58            [64, 497, 4, 4]             994
              ReLU-59            [64, 497, 4, 4]               0
@@ -65,7 +65,7 @@ BasicBlock_with_config-56            [64, 247, 8, 8]               0
            Conv2d-62            [64, 377, 4, 4]          93,119
       BatchNorm2d-63            [64, 377, 4, 4]             754
              ReLU-64            [64, 377, 4, 4]               0
-BasicBlock_with_config-65            [64, 377, 4, 4]               0
+BasicBlock_with_config-65       [64, 377, 4, 4]               0
            Conv2d-66              [64, 5, 4, 4]          16,965
       BatchNorm2d-67              [64, 5, 4, 4]              10
              ReLU-68              [64, 5, 4, 4]               0
@@ -74,7 +74,7 @@ BasicBlock_with_config-65            [64, 377, 4, 4]               0
            Conv2d-71            [64, 420, 4, 4]         158,340
       BatchNorm2d-72            [64, 420, 4, 4]             840
              ReLU-73            [64, 420, 4, 4]               0
-BasicBlock_with_config-74            [64, 420, 4, 4]               0
+BasicBlock_with_config-74       [64, 420, 4, 4]               0
 AdaptiveAvgPool2d-75            [64, 420, 1, 1]               0
            Linear-76                  [64, 512]         215,552
       BatchNorm1d-77                  [64, 512]           1,024
